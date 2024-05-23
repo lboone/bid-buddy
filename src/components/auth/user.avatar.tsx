@@ -25,8 +25,16 @@ export const UserAvatar = async () => {
     <div>
         {
             session?.user?.name 
-            ? (<ToolTipComponent props={{content:<div>{userCreds}</div>}}><Image className="rounded-full" src={session?.user?.image || ''} alt="User Avatar" width={40} height={40} /></ToolTipComponent>)
-            : (<ToolTipComponent props={{content:<>No Name</>}}><CircleUserRound className="mr-2 size-5" /></ToolTipComponent>)
+            ? (
+                <ToolTipComponent props={{content:<>{userCreds}</>}}>
+                  <Image className="rounded-full hover:cursor-pointer hover:drop-shadow-lg" src={session?.user?.image || ''} alt="User Avatar" width={40} height={40} />
+                </ToolTipComponent>
+              )
+            : (
+                <ToolTipComponent props={{content:<>No Name</>}}>
+                  <CircleUserRound className="mr-2 size-[40px] rounded-full" />
+                </ToolTipComponent>
+              )
         }
     </div>
   )
